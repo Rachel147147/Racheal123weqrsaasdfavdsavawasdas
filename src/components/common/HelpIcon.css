@@ -1,0 +1,138 @@
+.help-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+}
+
+.help-icon {
+  color: #6366f1;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.help-icon:hover {
+  color: #4f46e5;
+  transform: scale(1.1);
+}
+
+.help-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.help-icon-button:focus {
+  outline: none;
+}
+
+.help-icon-button:focus-visible .help-icon {
+  color: #4f46e5;
+  transform: scale(1.1);
+}
+
+/* Modal styles */
+.help-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.help-modal {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 480px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.help-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.help-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.help-modal-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.help-modal-title svg {
+  color: #6366f1;
+}
+
+.help-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.help-modal-close:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.help-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.help-modal-content p {
+  margin: 0 0 12px;
+}
+
+.help-modal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.help-modal-content ul {
+  margin: 12px 0;
+  padding-left: 20px;
+}
+
+.help-modal-content li {
+  margin-bottom: 8px;
+}
+
+.help-modal-content strong {
+  color: #1f2937;
+  font-weight: 600;
+}

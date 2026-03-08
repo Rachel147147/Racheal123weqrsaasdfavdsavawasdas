@@ -1,0 +1,827 @@
+/* ============================================
+   HardwareSolutionView 组件样式
+   使用统一的设计系统变量
+   ============================================ */
+
+.hardware-solution-view {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-primary);
+}
+
+/* ============================================
+   确认对话框
+   ============================================ */
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  backdrop-filter: blur(4px);
+}
+
+.confirm-dialog {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-2xl);
+}
+
+.confirm-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1rem;
+  background: var(--color-accent-50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.confirm-dialog h3 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.confirm-dialog p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-lg) 0;
+  line-height: 1.6;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+.btn-cancel,
+.btn-confirm {
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+.btn-cancel {
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-cancel:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.btn-confirm {
+  background: var(--color-danger);
+  color: white;
+}
+
+.btn-confirm:hover {
+  background: var(--color-danger-dark);
+}
+
+/* ============================================
+   头部操作栏
+   ============================================ */
+
+.solution-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.625rem 1rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.back-button:hover {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.header-title h1 {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.header-title p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0.25rem 0 0 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.export-button,
+.generate-button {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: none;
+}
+
+.export-button {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.export-button:hover:not(:disabled) {
+  background: var(--color-bg-tertiary);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.generate-button {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  box-shadow: var(--shadow-primary);
+}
+
+.generate-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+.export-button:disabled,
+.generate-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   导出结果提示
+   ============================================ */
+
+.export-result {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.875rem 1.25rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1rem;
+  font-size: var(--font-size-base);
+}
+
+.export-result.success {
+  background: var(--color-secondary-50);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--color-secondary-dark);
+}
+
+.export-result.error {
+  background: var(--color-danger-50);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--color-danger-dark);
+}
+
+/* ============================================
+   主内容区域
+   ============================================ */
+
+.solution-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  flex: 1;
+  min-height: 0;
+}
+
+.left-panel,
+.right-panel {
+  min-height: 0;
+  overflow: visible;
+}
+
+/* ============================================
+   左侧信息栏
+   ============================================ */
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ============================================
+   信息区块
+   ============================================ */
+
+.info-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section-title svg {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   方案概述
+   ============================================ */
+
+.overview-content {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.overview-content p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.overview-content strong {
+  color: var(--color-text-primary);
+}
+
+.architecture-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.arch-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.arch-item svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.arch-item strong {
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   设计思路
+   ============================================ */
+
+.design-concept {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.design-concept p {
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.concept-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: 1rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.highlight-item svg {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   技术参数
+   ============================================ */
+
+.tech-params {
+  margin-top: var(--spacing-sm);
+}
+
+.param-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.param-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.param-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.param-value {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   连线方式
+   ============================================ */
+
+.connections-content {
+  margin-top: var(--spacing-sm);
+}
+
+.interface-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.interface-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.625rem var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+}
+
+.interface-badge {
+  padding: 0.25rem 0.625rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.interface-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   右侧元器件清单
+   ============================================ */
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.bom-container {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.bom-header .section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bom-help-icon {
+  color: var(--color-text-secondary);
+  cursor: help;
+  transition: color 0.2s ease;
+}
+
+.bom-help-icon:hover {
+  color: var(--color-primary);
+}
+
+.bom-summary {
+  display: flex;
+  gap: 1rem;
+}
+
+.bom-summary .summary-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.bom-summary .summary-item svg {
+  color: var(--color-primary);
+}
+
+.bom-summary .total-cost {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   表格容器
+   ============================================ */
+
+.bom-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.bom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.bom-table th,
+.bom-table td {
+  padding: var(--spacing-sm) 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bom-table th {
+  background: var(--color-bg-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.bom-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+
+.bom-table th.sortable:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.bom-table th.numeric,
+.bom-table td.numeric {
+  text-align: center;
+}
+
+.bom-table th span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sort-icon {
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: var(--color-primary);
+}
+
+.bom-table tbody tr {
+  transition: background var(--transition-fast);
+}
+
+.bom-table tbody tr:hover {
+  background: var(--color-bg-secondary);
+}
+
+.bom-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   元器件名称单元格
+   ============================================ */
+
+.component-name-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.category-badge {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.component-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.part-number {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.specifications {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  max-width: 200px;
+  line-height: 1.4;
+}
+
+.supplier {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.quantity {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.remarks {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
+/* ============================================
+   响应式设计
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .solution-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .left-panel {
+    order: 1;
+  }
+  
+  .right-panel {
+    order: 2;
+  }
+  
+  .bom-container {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hardware-solution-view {
+    padding: var(--spacing-md);
+  }
+  
+  .solution-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-left {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  
+  .export-button,
+  .generate-button {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .param-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .bom-summary {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .bom-table th,
+  .bom-table td {
+    padding: 0.625rem var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  .specifications {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .confirm-dialog {
+    padding: var(--spacing-lg);
+  }
+  
+  .confirm-actions {
+    flex-direction: column;
+  }
+  
+  .btn-cancel,
+  .btn-confirm {
+    width: 100%;
+  }
+  
+  .header-title h1 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .info-section {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ============================================
+   骨架屏加载状态
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-secondary) 25%, var(--color-bg-tertiary) 50%, var(--color-bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-text {
+  height: 1rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.skeleton-text:last-child {
+  width: 60%;
+  margin-bottom: 0;
+}
+
+.skeleton-title {
+  height: 1.25rem;
+  width: 40%;
+  margin-bottom: 1rem;
+}
+
+.skeleton-card {
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+/* ============================================
+   打印样式
+   ============================================ */
+
+@media print {
+  .hardware-solution-view {
+    padding: 0;
+    background: white;
+  }
+  
+  .solution-header,
+  .export-button,
+  .generate-button,
+  .back-button {
+    display: none !important;
+  }
+  
+  .solution-content {
+    display: block;
+  }
+  
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    page-break-inside: avoid;
+  }
+  
+  .info-section,
+  .bom-container {
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+  
+  .bom-table-wrapper {
+    overflow: visible;
+    max-height: none;
+  }
+  
+  .bom-table th {
+    position: static;
+  }
+}

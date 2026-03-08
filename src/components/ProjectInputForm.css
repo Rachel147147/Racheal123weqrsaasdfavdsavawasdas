@@ -1,0 +1,442 @@
+/* ============================================
+   ProjectInputForm 组件样式
+   使用统一的设计系统变量
+   ============================================ */
+
+.project-input-form-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+.project-input-form {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.project-input-form:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   表单头部
+   ============================================ */
+
+.form-header {
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+}
+
+.form-title {
+  margin: 0 0 var(--spacing-xs);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.5px;
+}
+
+.form-subtitle {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
+/* ============================================
+   表单主体
+   ============================================ */
+
+.form-body {
+  padding: var(--spacing-xl);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.required-mark {
+  color: var(--color-danger);
+  margin-left: 2px;
+}
+
+/* ============================================
+   输入框样式
+   ============================================ */
+
+.input-wrapper,
+.textarea-wrapper {
+  position: relative;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 70px;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--color-border-hover);
+  background-color: var(--color-bg-tertiary);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-tertiary);
+  box-shadow: 0 0 0 4px var(--color-primary-100);
+}
+
+.form-input:disabled,
+.form-textarea:disabled {
+  background-color: var(--color-bg-tertiary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+  font-family: var(--font-sans);
+}
+
+/* ============================================
+   字符计数器
+   ============================================ */
+
+.char-counter {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  background: var(--color-bg-tertiary);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}
+
+.input-wrapper .char-counter {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+}
+
+.char-counter.over-limit {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   错误状态
+   ============================================ */
+
+.form-group.has-error .form-input,
+.form-group.has-error .form-textarea {
+  border-color: var(--color-danger);
+  background-color: var(--color-danger-50);
+}
+
+.form-group.has-error .form-input:focus,
+.form-group.has-error .form-textarea:focus {
+  box-shadow: 0 0 0 4px var(--color-danger-100);
+}
+
+.form-group.over-limit .form-input,
+.form-group.over-limit .form-textarea {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-50);
+}
+
+.error-message {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+  animation: shake 0.3s ease-in-out;
+}
+
+/* ============================================
+   提交按钮
+   ============================================ */
+
+.form-actions {
+  margin-top: var(--spacing-xl);
+}
+
+.submit-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: white;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.submit-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.submit-button.loading {
+  background: linear-gradient(135deg, var(--color-text-muted) 0%, var(--color-text-tertiary) 100%);
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   加载动画
+   ============================================ */
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-text {
+  font-size: var(--font-size-base);
+}
+
+/* ============================================
+   进度条
+   ============================================ */
+
+.progress-bar-container {
+  height: 4px;
+  background: var(--color-bg-tertiary);
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  transition: width 0.3s ease;
+  animation: progress-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ============================================
+   提示信息
+   ============================================ */
+
+.form-tips {
+  margin-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-200);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-light);
+}
+
+.tip-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--color-primary);
+}
+
+/* ============================================
+   响应式布局
+   ============================================ */
+
+@media (max-width: 640px) {
+  .project-input-form-container {
+    padding: var(--spacing-md);
+  }
+
+  .form-header {
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+  }
+
+  .form-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .form-subtitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .form-body {
+    padding: var(--spacing-md);
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 0.625rem 0.875rem;
+    padding-right: 65px;
+    font-size: var(--font-size-sm);
+  }
+
+  .submit-button {
+    padding: 0.75rem 1.25rem;
+    font-size: var(--font-size-base);
+  }
+
+  .form-tips {
+    margin-top: var(--spacing-md);
+  }
+
+  .tip-item {
+    padding: 0.625rem 0.75rem;
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ============================================
+   深色模式支持
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .project-input-form {
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .form-label {
+    color: var(--color-text-secondary);
+  }
+
+  .form-input,
+  .form-textarea {
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-border);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-input:hover,
+  .form-textarea:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-bg-tertiary);
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    background-color: var(--color-bg-tertiary);
+  }
+
+  .char-counter {
+    background: var(--color-bg-tertiary);
+    color: var(--color-text-muted);
+  }
+
+  .form-group.has-error .form-input,
+  .form-group.has-error .form-textarea {
+    background-color: var(--color-danger-50);
+  }
+
+  .form-group.over-limit .form-input,
+  .form-group.over-limit .form-textarea {
+    background-color: var(--color-accent-50);
+  }
+
+  .tip-item {
+    background: var(--color-primary-50);
+    border-color: var(--color-primary-200);
+    color: var(--color-primary-light);
+  }
+
+  .tip-icon {
+    color: var(--color-primary);
+  }
+
+  .progress-bar-container {
+    background: var(--color-bg-tertiary);
+  }
+}
